@@ -1,4 +1,17 @@
 /* App.css */
 body {
-  background-color: rgb(60,60,60); /* Change this to any color you prefer */
+  background-image: url('C:\Users\tm150\Downloads\DSA_Cash_Flow_Minimizer-main\DSA_Cash_Flow_Minimizer-main\src\assets\bg.jpg'); /* Relative path to the image */
+  background-size: cover; /* Makes the image cover the whole screen */
+  background-position: center center; /* Centers the image */
+  background-attachment: fixed; /* Keeps the background fixed while scrolling */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  color: #fff; /* Sets text color to white to contrast against dark background */
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

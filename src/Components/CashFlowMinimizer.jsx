@@ -1,5 +1,6 @@
 // src/components/CashFlowMinimizer.jsx
 import React, { useEffect, useState } from "react";
+import { Fade } from "@mui/material";  // For fade-in effect
 
 const CashFlowMinimizer = ({ transactions, onMinimizedFlow }) => {
   const [minimizedFlow, setMinimizedFlow] = useState([]);
@@ -49,22 +50,43 @@ const CashFlowMinimizer = ({ transactions, onMinimizedFlow }) => {
   }, [transactions, onMinimizedFlow]);
 
   return (
-    <div>
-      <h2 style={{ fontWeight: "bold", fontSize: "25px" }}>
+    <div style={{ padding: "20px", backgroundColor: "#f4f7f6", borderRadius: "8px", boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)" }}>
+      <h2
+        style={{
+          fontWeight: "700",
+          fontSize: "28px",
+          color: "#333", // Changed to dark gray for a more professional look
+          fontFamily: "'Roboto', sans-serif",
+          textAlign: "center",
+          marginBottom: "20px",
+        }}
+      >
         Optimized Cash Flow
       </h2>
-      {minimizedFlow.map((trans, idx) => (
-        <p
-          key={idx}
-          style={{
-            marginTop: "5px",
-            fontSize: "20px",
-            color: "#33ff77",
-          }}
-        >
-          {trans.payer} pays {trans.payee} ₹{trans.amount.toFixed(2)}
-        </p>
-      ))}
+
+      <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+        {minimizedFlow.map((trans, idx) => (
+          <Fade key={idx} in={true} timeout={1000}>
+            <p
+              style={{
+                marginTop: "15px",
+                fontSize: "18px",
+                color: "#1e7e34", // Green for the flow amount
+                fontFamily: "'Roboto', sans-serif",
+                lineHeight: "1.6",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+              }}
+              onMouseOver={(e) => e.target.style.color = '#007bff'} // Hover effect
+              onMouseOut={(e) => e.target.style.color = '#1e7e34'} // Revert on mouse out
+            >
+              <span style={{ fontWeight: "bold" }}>{trans.payer}</span> pays{" "}
+              <span style={{ fontWeight: "bold" }}>{trans.payee}</span> ₹
+              {trans.amount.toFixed(2)}
+            </p>
+          </Fade>
+        ))}
+      </div>
     </div>
   );
 };
